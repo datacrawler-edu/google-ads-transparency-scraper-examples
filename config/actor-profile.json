@@ -1,0 +1,31 @@
+{
+  "repository": {
+    "name": "google-ads-transparency-scraper-examples",
+    "description": "Find public Google Ads Transparency Center creatives by domain, advertiser, platform and date.",
+    "homepage": "https://apify.com/datascraperes/google-ads-transparency-scraper?fpr=edudata",
+    "language": "Python",
+    "license": "MIT"
+  },
+  "actor": {
+    "displayName": "Google Ads Transparency Scraper",
+    "id": "datascraperes/google-ads-transparency-scraper",
+    "storeUrl": "https://apify.com/datascraperes/google-ads-transparency-scraper",
+    "apiBaseUrl": "https://api.apify.com/v2/acts/datascraperes~google-ads-transparency-scraper",
+    "description": "Search public Google Ads Transparency Center creatives and optionally enrich them with observable preview text and assets."
+  },
+  "affiliate": {
+    "enabled": true,
+    "parameter": "fpr=edudata",
+    "actorUrl": "https://apify.com/datascraperes/google-ads-transparency-scraper?fpr=edudata",
+    "pricingUrl": "https://apify.com/pricing?fpr=edudata"
+  },
+  "platform": {"apifyFreePlan": {"monthlyPrepaidUsage": "$5", "renewsMonthly": true, "noCreditCardRequired": true, "unusedCreditsExpire": true, "sourceUrl": "https://apify.com/pricing?fpr=edudata"}},
+  "interfaces": {"web": {"enabled": true, "inputTab": "Input", "outputTab": "Dataset", "runAction": "Start", "primaryInput": "searchQuery", "inputLabel": "Website, advertiser name or ID", "inputSummary": "Enter a domain, website URL, advertiser name or advertiser ID.", "exportFormats": ["JSON", "CSV"]}, "api": {"enabled": true, "examples": ["cURL", "Python", "JavaScript"]}},
+  "seo": {"primaryKeyword": "Google Ads Transparency Center scraper", "secondaryKeywords": ["Google ads library scraper", "advertiser creative data", "Google Ads dataset"], "topics": ["apify", "web-scraping", "google-ads", "advertising-data", "python"], "longTailIntents": ["how to export Google Ads Transparency Center creatives", "scrape advertiser ads by domain", "get Google ad creative data as JSON"]},
+  "content": {"readmeSectionOrder": ["What this repository helps you do", "Example result", "Run without code", "Try it with Apify's free plan", "Quick start for developers", "Input example", "Request examples", "Output fields", "Common use cases", "Long-tail use-case sections", "FAQ", "Limits and pricing", "Hosted version", "Responsible use", "Support"], "exampleFiles": ["examples/python/search_creatives.py", "examples/python/export_dataset.py"], "faqFile": "docs/faq.md"},
+  "pricing": {"summary": "The Actor charges per successful ad result and charges optional enrichment only when enrichment returns data.", "unit": "one successful output item", "price": "$0.75-$1.00 per 1,000 events depending on tier"},
+  "distribution": {"githubUrl": "https://github.com/datacrawler-edu/google-ads-transparency-scraper-examples", "actorToGithubUrl": "https://github.com/datacrawler-edu/google-ads-transparency-scraper-examples", "githubToActorUrl": "https://apify.com/datascraperes/google-ads-transparency-scraper?fpr=edudata", "organizationHubUrl": "https://github.com/datacrawler-edu", "firstRelease": {"tag": "v0.1.0", "title": "Initial public examples"}},
+  "examples": {"inputFile": "data/sample-input.json", "outputFile": "data/sample-output.json", "csvFile": "data/sample-output.csv"},
+  "measurement": {"observationWindowDays": 30, "githubSignals": ["views", "uniqueVisitors", "clones", "referrers", "popularContent"], "apifySignals": ["users", "runs", "datasetItems", "revenue"], "searchChecks": ["site:github.com/datacrawler-edu/google-ads-transparency-scraper-examples", "Google Ads Transparency Center scraper examples"]},
+  "support": {"issuesUrl": "https://github.com/datacrawler-edu/google-ads-transparency-scraper-examples/issues", "actorSupportUrl": "https://apify.com/datascraperes/google-ads-transparency-scraper?fpr=edudata"}
+}
