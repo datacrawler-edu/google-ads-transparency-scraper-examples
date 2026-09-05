@@ -1,12 +1,38 @@
 # Google Ads Transparency Center scraper
 
+Run the hosted [Google Ads Transparency Scraper on Apify](https://apify.com/datascraperes/google-ads-transparency-scraper?fpr=edudata) without writing scraping code, or integrate it with Python, JavaScript, or cURL to collect structured public advertiser creatives.
+
+[Browse the technical examples and sample Dataset](https://github.com/datacrawler-edu/google-ads-transparency-scraper-examples)
+
+This repository contains executable API examples, verified sample input, realistic Dataset output, and a CSV export. It documents the public integration surface without exposing the Actor's private implementation, proxy configuration, or credentials.
+
 ## What this repository helps you do
 
-Search public Google Ads Transparency Center creatives by website domain, advertiser name, or advertiser ID. Filter by platform, format, country, and dates, then inspect deduplicated ad records in JSON or CSV.
+- Search public Google Ads Transparency Center creatives by website domain, advertiser name, or advertiser ID.
+- Filter by Google platform, ad format, country, and inclusive date range.
+- Inspect deduplicated advertiser/creative records with IDs, active dates, and public URLs.
+- Optionally enrich selected creatives with observable preview text and asset URLs.
+- Export results to JSON or CSV for research and reporting.
 
 ## Example result
 
-The [sample dataset](data/sample-output.json) contains advertiser and creative IDs, active dates, ad URLs, the matched domain, and optional preview enrichment. The [CSV sample](data/sample-output.csv) can be opened directly in a spreadsheet.
+The complete verified sample is available in [`data/sample-output.json`](data/sample-output.json), with the same fields in [`data/sample-output.csv`](data/sample-output.csv).
+
+```json
+{
+  "advertiserId": "AR16832577870747402241",
+  "advertiserName": "NIKE GLOBAL TRADING B.V. SINGAPORE BRANCH",
+  "creativeId": "CR05650980632755437569",
+  "adFormat": "text",
+  "firstShown": "2026-09-03",
+  "lastShown": "2026-09-05",
+  "approxDaysShown": 3,
+  "matchedDomain": "nike.com",
+  "previewFetched": true
+}
+```
+
+The fixture proves the output contract; public advertising records and preview availability can change over time.
 
 ## Run without code
 
@@ -48,7 +74,7 @@ See [`examples/curl-request.md`](examples/curl-request.md).
 
 ### Python
 
-See [`examples/python/search_creatives.py`](examples/python/search_creatives.py).
+[`examples/python/search_creatives.py`](examples/python/search_creatives.py) runs the sample input. [`examples/python/batch_search_creatives.py`](examples/python/batch_search_creatives.py) runs separate searches for multiple domains, and [`examples/python/export_ads_csv.py`](examples/python/export_ads_csv.py) converts the checked-in sample output to CSV.
 
 ### JavaScript
 
@@ -56,7 +82,19 @@ See [`examples/javascript/request.mjs`](examples/javascript/request.mjs).
 
 ## Output fields
 
-Each Dataset item may include advertiser and creative IDs, advertiser name, ad format, first and last shown dates, approximate days shown, ad and preview URLs, matched domain, original search query, scrape timestamp, and optional `previewFetched`, `previewText`, and `previewAssetUrls` fields.
+| Field | Meaning |
+| --- | --- |
+| `advertiserId` | Public Google advertiser identifier. |
+| `advertiserName` | Public advertiser name when available. |
+| `creativeId` | Public creative identifier. |
+| `adFormat` | Creative format returned by the source. |
+| `firstShown`, `lastShown` | Inclusive dates observed by the source. |
+| `approxDaysShown` | Approximate number of days shown. |
+| `adUrl`, `previewUrl` | Public creative or preview URLs. |
+| `matchedDomain` | Domain used to match the result. |
+| `previewFetched`, `previewText`, `previewAssetUrls` | Optional enrichment fields when preview retrieval returns usable data. |
+
+The Actor also writes a run-level `SUMMARY` record to the default Key-Value Store. See [`docs/output-reference.md`](docs/output-reference.md).
 
 ## Common use cases
 
@@ -67,7 +105,7 @@ Each Dataset item may include advertiser and creative IDs, advertiser name, ad f
 
 ## Export Google Ads Transparency Center creatives to CSV
 
-Run the Actor with `data/sample-input.json`, open the Dataset, and choose CSV export. The same workflow is available through the API examples, which let scheduled jobs save the returned items into a data pipeline.
+Use [`examples/python/export_ads_csv.py`](examples/python/export_ads_csv.py) for the checked-in sample, or run the Actor and export its Dataset as CSV from Apify Console. The same workflow is available through the API examples for scheduled data pipelines.
 
 ## Find advertiser ads by domain and date
 
