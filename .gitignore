@@ -1,7 +1,8 @@
 .env
+.agents/
+AGENTS.md
 .venv/
 __pycache__/
 node_modules/
 *.log
 data/exports/
-
